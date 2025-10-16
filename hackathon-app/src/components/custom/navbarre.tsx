@@ -24,7 +24,7 @@ export default function Navbar() {
             <Link href="/tournaments">Tournaments</Link>
           </Button>
           <Button asChild>
-            <Link href="/signin">Sign In</Link>
+            <Link href="/register">Sign In</Link>
           </Button>
         </nav>
 
