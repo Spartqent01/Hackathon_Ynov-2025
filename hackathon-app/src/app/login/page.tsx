@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import Link from "next/link";
 
 export default function LoginPage() {
   return (
@@ -26,11 +27,11 @@ export default function LoginPage() {
           <form>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="pseudo">Pseudo</Label>
                 <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
+                  id="pseudo"
+                  type="text"
+                  placeholder="John Doe"
                   required
                 />
               </div>
@@ -51,10 +52,10 @@ export default function LoginPage() {
         </CardContent>
         <CardFooter className="flex-col gap-2">
           <Button type="submit" variant="outline" className="w-full">
-            S'identifier
+            <Link href="/">S'identifier</Link>
           </Button>
           <Button type="submit" variant="outline" className="w-full">
-            Créer un compte
+            <Link href="/register">Créer un compte</Link>
           </Button>
         </CardFooter>
       </Card>
