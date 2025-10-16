@@ -31,7 +31,8 @@ Bienvenue dans le Hackathon Ynov Toulouse 2025 !
 - Dev' FullStack 2 : HEUILLET Aubin
 - Dev' FullStack 3 : HEUILLET Médéric
 - Cloud & Infrastructure 1 : MARTIAL Quentin
-- Cloud & Infrastructure 2 : AMOUSSA Hamdou
+- Cloud & Infrastructure 2 : AMOUSSA Hamdoune
+- Cloud & Infrastructure 3 : BANCE Ousmane
 - IA & Data 1 : MASSAMBA Amadou
 - IA & Data 2 : THEVENET Aymeric
 - IA & Data 3 : FANNY Mehita
