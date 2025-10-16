@@ -16,7 +16,7 @@ export default function LoginPage() {
     <main className="flex justify-center mt-16">
       <Card className="md:w-full md:max-w-sm ">
         <CardHeader>
-          <CardTitle className="flex justify-center">Bracket Host</CardTitle>
+          <CardTitle className="flex justify-center">BracketHost</CardTitle>
           <CardDescription className="flex justify-center">
             Des tournois facilement accessibles
           </CardDescription>
