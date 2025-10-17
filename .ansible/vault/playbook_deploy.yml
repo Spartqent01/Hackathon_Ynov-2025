@@ -1,0 +1,71 @@
+
+---
+- name: Install Docker, Portainer, MariaDB locally
+  hosts: localhost
+  connection: local
+  become: true
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+
+    # ---- Docker (geerlingguy.docker) ----
+    docker_service_manage: true
+    docker_service_state: started
+    docker_service_enabled: true
+    docker_install_compose_plugin: false
+    docker_install_compose: false
+    docker_users:
+      - "{{ ansible_user_id }}"
+    docker_daemon_options:
+      storage-driver: "overlay2"
+      log-opts:
+        max-size: "100m"
+  
+    # ---- Pip (geerlingguy.pip) ----
+    pip_package: "python3-pip"
+    pip_executable: "pip3"
+    pip_install_packages:
+      - name: docker
+        state: latest
+      - name: awscli
+        state: latest
+
+    # ---- Portainer (shelleg.ansible_role_portainer) ----
+    persistent_data_path: "/opt/portainer:/data"
+    version: "latest"          # Exemple: "2.21.5" si vous souhaitez figer la version
+    remove_existing_container: false
+    remove_persistent_data: false
+    configure_settings: false
+    configure_registry: false
+    admin_password: UhSxK8FzxrQVwn
+    auth_method: 1             # 1 = standalone, 2 = LDAP
+    # registry_type: 3         # 1=Quay, 2=ACR, 3=Custom (si configure_registry: true)
+
+    # ---- MariaDB (fauust.mariadb) ----
+    mariadb_use_official_repo: false
+    mariadb_port: 3306
+    mariadb_bind_address: "127.0.0.1"
+
+    mariadb_databases:
+      - name: appdb
+        collation: utf8_general_ci
+        encoding: utf8
+        replicate: false
+
+    mariadb_users:
+      - name: app
+        host: "127.0.0.1"
+        password: "CHANGEME"
+        priv: "appdb.*:ALL"
+        resource_limits:
+          MAX_USER_CONNECTIONS: 20
+        state: present
+
+
+  roles:
+    - role: geerlingguy.pip
+    - role: geerlingguy.docker
+    - role: shelleg.ansible_role_portainer
+    - role: fauust.mariadb
+
