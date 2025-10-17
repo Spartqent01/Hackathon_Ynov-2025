@@ -25,6 +25,7 @@ Votre mission : transformer le babyfoot classique en expérience high-tech pour 
 ## Architecture mise en place
 
 - Schéma réseau 
+![alt text](<Diagramme sans nom.drawio.png>)
 - Détails des composants :
   - Serveurs :
         - Suuuuuper_tournoi, 172.17.2.10, debian 13
@@ -54,23 +55,7 @@ Action principales :
 
 ---
 
-## Problèmes rencontrés et solutions
-| Problème | Cause | Solution mise en œuvre |
-|-----------|--------|------------------------|
-|  |  |  |
-
-
----
-
-## Résultats et livrables
-- Services opérationnels et documentés
-- Accès fonctionnels (SSH, HTTPS, dashboards, etc.)
-- 
-
----
-
 ## Déploiement
-
 - Copie du contenu de .ansible 
 - ajout de la machine cible dans `inventory.yml`
 - depuis le venv ansible lancement du playbook `ansible-playbook playbook_deploy.yml --ask-become-password`
