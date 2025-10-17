@@ -51,6 +51,7 @@ model Tournament {
   id Int @id @default(autoincrement())
   name String
   date DateTime
+  team_max Int
   games Game[] 
   }
 
