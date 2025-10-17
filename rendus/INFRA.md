@@ -65,14 +65,9 @@ Action principales :
 ---
 
 ## Bilan et perspectives
-- Résumé des objectifs atteints
+- Résumé des objectifs :
 - Améliorations prévues : monitoring Prometheus, automatisation complète, sauvegardes externalisées.
 
----
 
-## Annexes (optionnel)
-- Schémas détaillés (topologie réseau)
-- Scripts shell / YAML
-- Captures d’écran ou journaux d’exécution
 
 ---
