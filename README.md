@@ -62,17 +62,25 @@ AMOUSSA Hamdoune
 
 ## Architecture
 
-> Faite un schéma simple de l'architecture technique de votre solution. Chaque service/composant est un bloc, et les interactions entre les blocs sont des flèches. Vous pouvez utiliser des outils comme [draw.io](https://app.diagrams.net/), ou encore [Excalidraw](https://excalidraw.com/) pour créer vos schémas. C'est une vue d'ensemble, pas un détail de chaque composant. Chacun d'entre vous doit être capable d'expliquer cette architecture.
+- Schéma réseau 
+![alt text](<Diagramme sans nom.drawio.png>)
+- Détails des composants :
+  - Serveurs :
+        - Suuuuuper_tournoi, 172.17.2.10, debian 13
+        - Suuuuuper_replicat, 172.17.2.11, debian 13
+   Réseau :
+        - vmbr0 : 137.0.0.1/32 
+        - vmbr1 : 172.17.2.0/29
+  - Services : Docker, portainer, Mariadb, web
+  - failover : 
 
 ## Guide de déploiement
 
-> Expliquez comment déployer votre application **EN MOINS DE LIGNES DE COMMANDE POSSIBLES**. Docker, Ansible, Terraform, Scripts Shell... Le but est de pouvoir déployer votre application en une seule commande ou presque.
-
-Exemple de lancement en **une seule commande**:
-
-[Références Proxmox HelperScripts](https://github.com/community-scripts/ProxmoxVE/tree/main/install)
-
-> /!\ IMPORTANT /!\ : Votre projet sera déployé sur une machine **LINUX** (Debian/Ubuntu), avec 4Go de RAM et 2 CPU (x86_64). Assurez-vous que votre application peut fonctionner dans ces conditions. Il n'y aura pas de "Ca marche sur mon Mac." ou encore "Si on alligne les astres sur Windows XP ça passe.".
+- Copie du contenu de .ansible 
+- ajout de la machine cible dans `inventory.yml`
+- depuis le venv ansible lancement du playbook `ansible-playbook playbook_deploy.yml --ask-become-password`
+- resultats : 
+![alt text](image.png)
 
 ## Etat des lieux
 
