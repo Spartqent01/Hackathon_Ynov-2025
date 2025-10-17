@@ -43,6 +43,9 @@ export default function JoinTournamentPage() {
               <Button asChild>
                 <Link href="/tournaments/brackets">Rejoindre</Link>
               </Button>
+              <Button asChild>
+                <Link href="/tournaments/brackets/match">Match</Link>
+              </Button>
             </div>
           </CardContent>
         </Card>
@@ -70,6 +73,9 @@ export default function JoinTournamentPage() {
                 </div>
               <Button asChild className="w-full">
                 <Link href="/tournaments/brackets">Consulter</Link>
+              </Button>
+              <Button asChild>
+                <Link href="/tournaments/brackets/match">Match</Link>
               </Button>
             </CardFooter>
           </Card>
