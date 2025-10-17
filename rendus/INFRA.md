@@ -49,6 +49,7 @@ Action principales :
                         - portianer
                         - maradb
  ### Sécurité 
+    - VPN wiregard pour la connexion au portainer de la part des DEV 
  ### Monitoring
 
 ---
