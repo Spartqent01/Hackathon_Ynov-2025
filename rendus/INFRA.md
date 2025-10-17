@@ -21,163 +21,63 @@ Votre mission : transformer le babyfoot classique en expérience high-tech pour 
 # Requis
 
 
-### Architecture technique
-- Vue d’ensemble des composants et flux.
-- Zones de confiance, exposition externe, et dépendances critiques.
-- schéma
 
-### Environnements
-- Production, Préproduction, Recette, Développement.
-- Différences clés par environnement (tailles, secrets, feature flags).
+## Architecture mise en place
 
-| Environnement | Domaine | Objectif | Différences clés |
-|---|---|---|---|
-| Prod | | | |
-| Préprod | | | |
-| Recette | | | |
-| Dev | | | |
+- Schéma réseau 
+- Détails des composants :
+  - Serveurs :
+        - Suuuuuper_tournoi, 172.17.2.10, debian 13
+        - Suuuuuper_replicat, 172.17.2.11, debian 13
+   Réseau :
+        - vmbr0 : 137.0.0.1/32 
+        - vmbr1 : 172.17.2.0/29
+  - Services : Docker, portainer, Mariadb, web
+  - failover : 
 
-### Pile technologique
-- Compute: Portainer, Docker, bare-metal.
-- Réseau: NGINX.
-- Données: MySQL, Mariadb.
-- Observabilité: Prometheus/Grafana,Checkmk.
-- CI/CD: GitLab CI.
-- IaC & config: Ansible.
 
-### Justification des choix
-- Contraintes: sécurité, budget, compétences, délais, conformité.
-- Critères de sélection: simplicité, maintenabilité, SLA, performance.
+---
 
-| Composant | Option choisie | Alternatives | Raisons principales | Impacts/Trade-offs |
-|---|---|---|---|---|
-| Orchestration | Ansible | Puppet | simplicité | que des avantages pour la taille du projet |
-| Proxy/Ingress | Nginx | HAproxy, Traefik | gestion des entrées automatique et création de certif | |
-| Base de données | Mariadb | MySQL, Postges, N | | |
-| Stockage objet | | | | |
-| CI/CD | | | | |
-| Observabilité | | | | |
+## Réalisations techniques
+Action principales : 
+ ### Automatisation 
+ ### Sécurité 
+ ### Monitoring
 
-### Infrastructure as Code
-- Portée IaC: réseaux, compute, stockage, DNS, secrets.
-- Structuration des dépôts et conventions.
-- Politique de revue, tests et déploiement IaC.
+---
 
-```bash
-# Exemple d’inventaire Ansible (à adapter)
-[managers]
-swarm-mgr-1 ansible_host= ...
-[workers]
-swarm-wkr-[1:3] ansible_host= ...
-```
+## Problèmes rencontrés et solutions
+| Problème | Cause | Solution mise en œuvre |
+|-----------|--------|------------------------|
+|  |  |  |
 
-### Déploiement applicatif
-- Modèle: Docker Compose
-- Stratégies: blue/green, canary, rolling.
-- Variables d’environnement et templates.
 
-```yaml
-# Extrait docker stack/compose
-services:
-  app:
-    image: registry.example.com/app:${VERSION}
-    deploy:
-      replicas: 3
-      update_config:
-        order: start-first
-    environment:
-      APP_ENV: production
-```
+---
 
-### CI/CD et qualité
-- Pipelines: build, test, scan, release, déploiement.
-- Artefacts: images signées, provenance, SBOM.
-- Politique de branches, tags et versionnement.
+## Résultats et livrables
+- Services opérationnels et documentés
+- Accès fonctionnels (SSH, HTTPS, dashboards, etc.)
+- 
 
-```yaml
-# Extrait .gitlab-ci.yml
-stages: [build, test, scan, deploy]
-variables:
-  DOCKER_DRIVER: overlay2
-build:
-  stage: build
-  script: [ "docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA ." ]
-```
+---
 
-### Sécurité et secrets
-- AuthN/AuthZ: SSO, RBAC, clés d’accès.
-- Gestion des secrets: Ansible Vault.
-- Surfaces d’attaque, patching, durcissement.
+## Déploiement
+- Copie du contenu de .ansible 
+- ajout de la machine cible dans `inventory.yml`
+- depuis le venv ansible lancement du playbook `ansible-playbook playbook_deploy.yml --ask-become-password`
+- resultats : 
 
-- Journalisation sécurité et détection d’incidents.
-- Politique de rotation et durée de vie des secrets.
+---
 
-### Réseau, DNS et certificats
-- Schéma IP, subnets, VLANs, security groups.
-- Stratégie DNS et enregistrements.
-- TLS: émission, renouvellement, politiques de ciphers.
+## Bilan et perspectives
+- Résumé des objectifs atteints
+- Améliorations prévues : monitoring Prometheus, automatisation complète, sauvegardes externalisées.
 
-### Observabilité et exploitation
-- Logs: rétention, indexation, requêtes types.
-- Metrics et alertes: SLO/SLA, seuils et runbooks.
-- Traces: propagation et corrélation.
+---
 
-### Performance et capacité
-- Dimensionnement initial et headroom.
-- Tests de charge et profilage.
-- Plan d’élasticité et limites.
+## Annexes (optionnel)
+- Schémas détaillés (topologie réseau)
+- Scripts shell / YAML
+- Captures d’écran ou journaux d’exécution
 
-### Résilience, sauvegardes et PRA
-- Stratégie de sauvegarde: quoi, quand, où, rétention.
-- Tests de restauration et RPO/RTO.
-- Tolérance aux pannes et anti-affinité.
-
-```bash
-# Vérification d’un backup/restauration
-ansible-playbook restore.yml --check
-```
-
-### Coûts et optimisation
-- Estimation des coûts (compute, stockage, transfert).
-- Optimisations: bin packing, réservations, cycles de vie S3.
-- Arbitrages coût vs performance.
-
-### Procédures d’exploitation
-- Démarrage/arrêt contrôlé.
-- Rotation des certificats et mises à jour.
-- Gestion des incidents et communication.
-
-- Checklists opérationnelles:
-  - [ ] Santé des services
-  - [ ] Espace disque
-  - [ ] Certificats < 30 jours
-  - [ ] Sauvegardes vérifiées
-
-### Dépendances et compatibilité
-- Versions minimales requises.
-- Intégrations externes et SLAs.
-- Matrice de compatibilité.
-
-### Risques et dettes techniques
-- Risques majeurs et plans de mitigation.
-- Dettes acceptées et échéance de traitement.
-- Hypothèses clés à revalider.
-
-### Roadmap et évolutions
-- Prochaines itérations et jalons.
-- Expérimentations prévues.
-- Critères de sortie et succès.
-
-### FAQ rapide
-- Comment déployer localement ?
-- Que faire en cas d’alerte critique ?
-- Où trouver les dashboards utiles ?
-
-### Annexes
-- Glossaire.
-- Variables d’environnement centralisées.
-- Modèles de runbooks et checklists.
-
-***
-
-Souhaites-tu une variante plus ciblée Docker Swarm, Kubernetes, ou mixte avec GitLab CI et Ansible pré-remplis selon ton contexte à l’Université de Toulouse ?
+---
