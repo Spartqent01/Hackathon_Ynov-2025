@@ -16,15 +16,15 @@ export default function Navbar() {
       <div className="container flex h-16 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <Gamepad2 className="h-6 w-6" />
-          <span className="font-bold inline-block">TournaHub</span>
+          <span className="font-bold inline-block">Suuuuper Tournoi</span>
         </Link>
 
         <nav className="hidden md:flex items-center space-x-4 ml-auto">
           <Button variant="ghost" asChild>
-            <Link href="/tournaments">Tournaments</Link>
+            <Link href="/Brackets">Tournaments</Link>
           </Button>
           <Button asChild>
-            <Link href="/register">Sign In</Link>
+            <Link href="/register">Se connecter</Link>
           </Button>
         </nav>
 
@@ -37,17 +37,17 @@ export default function Navbar() {
             </SheetTrigger>
             <SheetContent>
               <SheetHeader>
-                <SheetTitle>TournaHub</SheetTitle>
+                <SheetTitle>Suuuper Tournoi</SheetTitle>
                 <SheetDescription>
                   Rejoignez des tournois et grimpez dans le classement.
                 </SheetDescription>
               </SheetHeader>
               <div className="grid gap-4 py-4">
                 <Button variant="ghost" asChild>
-                  <Link href="/tournaments">Tournaments</Link>
+                  <Link href="/brackets">Tournaments</Link>
                 </Button>
                 <Button asChild>
-                  <Link href="/register">Sign In</Link>
+                  <Link href="/register">se connecter</Link>
                 </Button>
                 <Button asChild>
                   <Link href="/signin">Profil</Link>

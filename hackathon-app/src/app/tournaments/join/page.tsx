@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -39,7 +40,9 @@ export default function JoinTournamentPage() {
           <CardContent>
             <div className="flex w-full items-center space-x-2">
               <Input type="text" placeholder="Ex: A4B-F8K" />
-              <Button type="submit">Rejoindre</Button>
+              <Button asChild>
+                <Link href="/tournaments/brackets">Rejoindre</Link>
+              </Button>
             </div>
           </CardContent>
         </Card>
@@ -65,7 +68,9 @@ export default function JoinTournamentPage() {
                   <Users className="mr-2 h-4 w-4" />
                   <span>{tournament.currentPlayers} / {tournament.maxPlayers} participants</span>
                 </div>
-              <Button className="w-full">Consulter</Button>
+              <Button asChild className="w-full">
+                <Link href="/tournaments/brackets">Consulter</Link>
+              </Button>
             </CardFooter>
           </Card>
         ))}

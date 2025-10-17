@@ -29,10 +29,6 @@ export default function CreateTournamentPage() {
                 <Input id="name" placeholder="Ex: Tournoi des Champions" />
               </div>
               <div className="flex flex-col space-y-2">
-                <Label htmlFor="game">Jeu</Label>
-                <Input id="game" placeholder="Ex: Valorant, League of Legends..." />
-              </div>
-              <div className="flex flex-col space-y-2">
                 <Label htmlFor="slots">Nombre de places</Label>
                 <Input id="slots" type="number" placeholder="Ex: 16" />
               </div>
