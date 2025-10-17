@@ -1,0 +1,146 @@
+// ==========================================================
+//  Prisma Schema for Game / Tournament / User Management
+// ==========================================================
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==========================================================
+// ENUMS
+// ==========================================================
+
+enum UserRole {
+  ADMIN
+  USER
+}
+
+enum TeamColor {
+  RED
+  BLUE
+}
+
+enum PlayerRole {
+  DEFENSE
+  ATTACK
+}
+
+// ==========================================================
+// MODELS
+// ==========================================================
+
+// ---------- UTILISATEURS ----------
+model User {
+  user_id   String     @id
+  name      String
+  username  String
+  email     String     @unique
+  password  String
+  role      UserRole   @default(USER)
+  createdAt DateTime   @default(now())
+
+  // Relations
+  teams     TeamMember[]
+  comments  Comment[]
+}
+
+// ---------- TOURNOIS ----------
+model Tournament {
+  id        Int       @id @default(autoincrement())
+  name      String
+  date      DateTime
+  team_max  Int
+  games     Game[]
+}
+
+// ---------- MATCHS ----------
+model Game {
+  id           String        @id
+  date         DateTime
+  location     String
+  duration     Int
+  referee      String
+  season       String
+  rating       Int
+  tournamentId Int?
+  tournament   Tournament?   @relation(fields: [tournamentId], references: [id])
+
+  // Relations
+  score     Score?
+  teams     GameTeam[]
+  comments  Comment[]
+}
+
+// ---------- EQUIPES ----------
+model Team {
+  id          Int          @id @default(autoincrement())
+  team_color  TeamColor
+  players     TeamMember[]
+  games       GameTeam[]
+}
+
+// ---------- JOUEURS DANS UNE EQUIPE ----------
+model TeamMember {
+  id        Int        @id @default(autoincrement())
+  userId    String
+  teamId    Int
+  role      PlayerRole
+
+  user      User       @relation(fields: [userId], references: [user_id])
+  team      Team       @relation(fields: [teamId], references: [id])
+
+  @@unique([userId, teamId]) // empêche les doublons joueur-équipe
+}
+
+// ---------- LIEN MATCH - EQUIPE ----------
+model GameTeam {
+  id      Int   @id @default(autoincrement())
+  gameId  String
+  teamId  Int
+
+  game    Game   @relation(fields: [gameId], references: [id])
+  team    Team   @relation(fields: [teamId], references: [id])
+
+  @@unique([gameId, teamId]) // empêche les doublons match-équipe
+}
+
+// ---------- SCORE ----------
+model Score {
+  id          Int        @id @default(autoincrement())
+  gameId      String     @unique
+  red_score   Int
+  blue_score  Int
+  winner      TeamColor
+
+  game        Game       @relation(fields: [gameId], references: [id])
+}
+
+// ---------- COMMENTAIRES ----------
+model Comment {
+  id              Int       @id @default(autoincrement())
+  gameId          String
+  userId          String
+  player_comment  String
+
+  game            Game      @relation(fields: [gameId], references: [id])
+  user            User      @relation(fields: [userId], references: [user_id])
+}
+
+// ---------- STATISTIQUES GÉNÉRALES ----------
+model Stats {
+  id                         Int        @id @default(autoincrement())
+  moyenne_score_red           Float
+  moyenne_score_blue          Float
+  moyenne_duree_match         Float
+  equipe_la_plus_victorieuse  TeamColor
+  moyenne_note_joueurs        Float
+  correlation_duree_buts      Float
+  nb_total_matchs             Int
+  createdAt                   DateTime  @default(now())
+}
