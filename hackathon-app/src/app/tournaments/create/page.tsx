@@ -10,6 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import Link from "next/link";
 
 export default function CreateTournamentPage() {
   return (
@@ -40,7 +41,7 @@ export default function CreateTournamentPage() {
           </form>
         </CardContent>
         <CardFooter>
-          <Button className="w-full">Créer le tournoi</Button>
+          <Button className="w-full"><Link href="/tournaments/join">Créer le tournoi</Link></Button>
         </CardFooter>
       </Card>
     </main>
