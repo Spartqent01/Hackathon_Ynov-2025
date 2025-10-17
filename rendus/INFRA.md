@@ -41,6 +41,13 @@ Votre mission : transformer le babyfoot classique en expérience high-tech pour 
 ## Réalisations techniques
 Action principales : 
  ### Automatisation 
+ l'automatisation est faite via ansible et les roles ansible, c'est pour des raisons de simplicité de déploiement et de temps de mise en place. 
+ En effet, D'autres solutions auraient été possible : puppet par exemple, mais les autres orchestrateurs de configuration nécessitent une installation plus longue (cluster plus agent sur les machines cible) à l'inverse Ansible nécessite uniquement un accès SSH sur la machine cible.
+ Les roles utilisés : 
+                        - pip
+                        - docker
+                        - portianer
+                        - maradb
  ### Sécurité 
  ### Monitoring
 
@@ -62,10 +69,12 @@ Action principales :
 ---
 
 ## Déploiement
+
 - Copie du contenu de .ansible 
 - ajout de la machine cible dans `inventory.yml`
 - depuis le venv ansible lancement du playbook `ansible-playbook playbook_deploy.yml --ask-become-password`
 - resultats : 
+![alt text](image.png)
 
 ---
 
