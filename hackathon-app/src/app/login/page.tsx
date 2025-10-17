@@ -30,7 +30,7 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     setErrorMsg("");
-
+  
     try {
       const res = await fetch("/api/login", {
         method: "POST",
@@ -40,13 +40,18 @@ export default function LoginPage() {
           password: formData.password,
         }),
       });
-
+  
       const data = await res.json();
-
+  
       if (!res.ok) {
         setErrorMsg(data.error || "Erreur lors de la connexion");
       } else {
-        router.push("/"); // Redirect on successful login
+        // data doit contenir role, ex : { userId, role }
+        if (data.role === "USER") {
+          router.push("/"); // page d’accueil pour user
+        } else {
+          router.push("/admin"); // page admin ailleurs
+        }
       }
     } catch {
       setErrorMsg("Erreur inattendue, réessayez plus tard.");
@@ -54,7 +59,7 @@ export default function LoginPage() {
       setLoading(false);
     }
   }
-
+  
   return (
     <main className="flex justify-center mt-16">
       <Card className="md:w-full md:max-w-sm ">

@@ -3,8 +3,9 @@ import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
+import prisma from '../../../db'
 
-const prisma = new PrismaClient();
+
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
 export async function POST(request: NextRequest) {
@@ -36,6 +37,7 @@ export async function POST(request: NextRequest) {
       const response = NextResponse.json({
         message: 'Connection successful',
         userId: user.user_id,
+        role: user.role,
       });
   
       response.cookies.set('token', token, {

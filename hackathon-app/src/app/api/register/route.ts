@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
+
+import prisma from '../../../db'
 
 async function generateUserId(): Promise<string> {
   const lastUser = await prisma.user.findFirst({
