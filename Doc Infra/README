@@ -1,0 +1,7 @@
+Le script `mariadb_backup.sh` réalise une sauvegarde quotidienne automatique de la base `tournoibabyfoot`.  
+
+La tâche planifiée via `cron` exécute ce script chaque jour à 2h du matin.
+ Configuration du cron :
+sh :
+crontab -e
+0 2 * * * /home/pythagore/Hackathon_Ynov-2025/infra/backup/mariadb_backup.sh

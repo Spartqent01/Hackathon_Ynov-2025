@@ -1,0 +1,11 @@
+up:
+	cd infrastructure && docker compose up -d --build
+
+down:
+	cd infrastructure && docker compose down -v
+
+scale:
+	cd infrastructure && docker compose up -d --scale api=3
+
+logs:
+	cd infrastructure && docker compose logs -f --tail 200
