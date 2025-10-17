@@ -28,7 +28,7 @@ import { Separator } from "@/components/ui/separator";
 import { Plus, RotateCcw, Car, Shield, Swords } from 'lucide-react';
 
 
-const listeDesJoueurs = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank"];
+const listeDesJoueurs = ["Alice", "Bob", "Eve", "Frank"];
 
 const nomEquipeA = "Les Foudres";
 const nomEquipeB = "Les Tornades";

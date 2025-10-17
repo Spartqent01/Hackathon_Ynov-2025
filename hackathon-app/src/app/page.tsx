@@ -6,20 +6,29 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <main>
-      <section className="py-20 md:py-32">
-        <div className="container mx-auto px-4 text-center">
+      <section className="relative h-[80vh] flex items-center justify-center text-center overflow-hidden">
+        <video
+          src="/Baby_Foot_Publicitaire_Cinématique_Hyperréaliste.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        />
+        <div className="absolute inset-0 bg-black/60 z-10" />
+        <div className="relative z-20 container mx-auto px-4 text-white">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
             Créez, Participez, Dominez.
           </h1>
-          <p className="max-w-xl mx-auto text-lg text-muted-foreground mb-8">
-            Bienvenue sur <strong>TournaHub</strong>, la plateforme où les joueurs se rassemblent pour
+          <p className="max-w-xl mx-auto text-lg text-neutral-300 mb-8">
+            Bienvenue sur <strong>Suuuper Tournoi</strong>, la plateforme où les joueurs se rassemblent pour
             participer à des tournois, suivre leurs performances et grimper dans les classements.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>
               <Link href="/tournaments">Voir les tournois</Link>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button size="lg" variant="secondary" asChild>
               <Link href="/register">S'inscrire gratuitement</Link>
             </Button>
           </div>
@@ -45,8 +54,7 @@ export default function HomePage() {
                 </div>
                 <CardTitle>Créez des Tournois</CardTitle>
                 <CardDescription>
-                  Organisez vos propres compétitions en quelques clics. Définissez les règles,
-                  invitez des joueurs et gérez les brackets facilement.
+                  Organisez vos propres compétitions en quelques clics.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -58,8 +66,7 @@ export default function HomePage() {
                 </div>
                 <CardTitle>Rejoignez la Communauté</CardTitle>
                 <CardDescription>
-                  Trouvez des tournois pour vos jeux préférés, rencontrez de nouveaux adversaires et
-                  rejoignez une communauté de passionnés.
+                  Trouvez des tournois pour vos jeux préférés.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -71,8 +78,7 @@ export default function HomePage() {
                 </div>
                 <CardTitle>Suivez votre Progression</CardTitle>
                 <CardDescription>
-                  Consultez votre historique de matchs, suivez vos statistiques de performance et
-                  voyez votre classement évoluer après chaque victoire.
+                  Consultez votre historique de matchs.
                 </CardDescription>
               </CardHeader>
             </Card>
