@@ -99,16 +99,25 @@ Le choix de **Next.js** comme technologie centrale n'a pas été anodin. Il rép
 ## Architecture
 
 - Schéma réseau 
-![alt text](<Diagramme sans nom.drawio.png>)
+
+![Diagramme sans nom.drawio.png](<Diagramme sans nom.drawio.png>)
+
 - Détails des composants :
   - Serveurs :
         - Suuuuuper_tournoi, 172.17.2.10, debian 13
+
         - Suuuuuper_replicat, 172.17.2.11, debian 13
+
    Réseau :
+
         - vmbr0 : 137.0.0.1/32 
+
         - vmbr1 : 172.17.2.0/29
+
   - Services : Docker, portainer, Mariadb, web
+
   - failover : 
+  
 
 ## Guide de déploiement
 
@@ -116,7 +125,8 @@ Le choix de **Next.js** comme technologie centrale n'a pas été anodin. Il rép
 - ajout de la machine cible dans `inventory.yml`
 - depuis le venv ansible lancement du playbook `ansible-playbook playbook_deploy.yml --ask-become-password`
 - resultats : 
-![alt text](image.png)
+![image.png](image.png)
+
 
 ## Etat des lieux
 
