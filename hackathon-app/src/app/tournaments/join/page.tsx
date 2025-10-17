@@ -14,7 +14,7 @@ import { Users } from "lucide-react";
 const data = [
   { id: 1, name: "Le Choc des Services", description: "Tournoi en doublette. Le service gagnant aura les droits de vantardise pendant un mois.", currentPlayers: 6, maxPlayers: 16 },
   { id: 2, name: "Tournoi de la Pause Café", description: "Matchs rapides en 5 points. Parfait pour les débutants et pour se détendre.", currentPlayers: 11, maxPlayers: 20 },
-  { id: 3, name: "La Revanche du Lundi", description: "Réglez les comptes du week-end. Tournoi solo, élimination directe.", currentPlayers: 5, maxPlayers: 8 },
+  { id: 3, name: "Team", description: "test", currentPlayers: 0, maxPlayers: 16 },
 ];
 
 export default function JoinTournamentPage() {
@@ -43,6 +43,9 @@ export default function JoinTournamentPage() {
               <Button asChild>
                 <Link href="/tournaments/brackets">Rejoindre</Link>
               </Button>
+              <Button asChild>
+                <Link href="/tournaments/brackets/match">Match</Link>
+              </Button>
             </div>
           </CardContent>
         </Card>
@@ -70,6 +73,9 @@ export default function JoinTournamentPage() {
                 </div>
               <Button asChild className="w-full">
                 <Link href="/tournaments/brackets">Consulter</Link>
+              </Button>
+              <Button asChild>
+                <Link href="/tournaments/brackets/match">Match</Link>
               </Button>
             </CardFooter>
           </Card>

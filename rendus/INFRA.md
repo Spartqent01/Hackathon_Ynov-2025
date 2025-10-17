@@ -20,14 +20,59 @@ Votre mission : transformer le babyfoot classique en expérience high-tech pour 
 
 # Requis
 
-Ce README contient les requis fonctionnels de la partie Cloud & Infra de votre projet. Il doit compléter le README principal à la racine du projet, et servira la partie de votre note propre à votre spécialité.
 
-Basez-vous sur les spécifications dans [SPECIFICATIONS.md](../SPECIFICATIONS.md) pour remplir ce document.
 
-Décrivez ici les actions que vous avez menées, votre démarche, les choix techniques que vous avez faits, les difficultés rencontrées, etc. Précisez également dans quelle mesure vous avez pu collaborer avec les autres spécialités.
+## Architecture mise en place
 
-Autrement, il n'y a pas de format imposé, mais essayez de rester clair et concis, je ne vous demande pas de rédiger un roman, passez à l'essentiel, et épargnez-moi de longues pages générées par IA (malusée).
+- Schéma réseau 
+![alt text](<Diagramme sans nom.drawio.png>)
+- Détails des composants :
+  - Serveurs :
+        - Suuuuuper_tournoi, 172.17.2.10, debian 13
+        - Suuuuuper_replicat, 172.17.2.11, debian 13
+   Réseau :
+        - vmbr0 : 137.0.0.1/32 
+        - vmbr1 : 172.17.2.0/29
+  - Services : Docker, portainer, Mariadb, web
+  - failover : 
 
-En conclusion, cela doit résumer votre travail en tant qu'expert.e infra, et vous permettre de garder un trace écrite de votre contribution au projet.
 
-Merci de votre participation, et bon courage pour la suite du hackathon !
+---
+
+## Réalisations techniques
+Action principales : 
+ ### Automatisation 
+ l'automatisation est faite via ansible et les roles ansible, c'est pour des raisons de simplicité de déploiement et de temps de mise en place. 
+ En effet, D'autres solutions auraient été possible : puppet par exemple, mais les autres orchestrateurs de configuration nécessitent une installation plus longue (cluster plus agent sur les machines cible) à l'inverse Ansible nécessite uniquement un accès SSH sur la machine cible.
+ Les roles utilisés : 
+                        - pip
+                        - docker
+                        - portianer
+                        - maradb
+ ### Sécurité 
+    - VPN wiregard pour la connexion au portainer de la part des DEV 
+ ### Monitoring
+
+---
+
+## Déploiement
+- Copie du contenu de .ansible 
+- ajout de la machine cible dans `inventory.yml`
+- depuis le venv ansible lancement du playbook `ansible-playbook playbook_deploy.yml --ask-become-password`
+- resultats : 
+![alt text](image.png)
+
+---
+
+## Bilan et perspectives
+- Résumé des objectifs atteints
+- Améliorations prévues : monitoring Prometheus, automatisation complète, sauvegardes externalisées.
+
+---
+
+## Annexes (optionnel)
+- Schémas détaillés (topologie réseau)
+- Scripts shell / YAML
+- Captures d’écran ou journaux d’exécution
+
+---

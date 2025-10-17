@@ -21,10 +21,16 @@ export default function Navbar() {
 
         <nav className="hidden md:flex items-center space-x-4 ml-auto">
           <Button variant="ghost" asChild>
-            <Link href="/Brackets">Tournaments</Link>
+            <Link href="/tournaments">Tournaments</Link>
+          </Button>
+          <Button variant="ghost" asChild>
+            <Link href="/admin">Dashboard Admin</Link>
           </Button>
           <Button asChild>
-            <Link href="/register">Se connecter</Link>
+            <Link href="/register">inscription</Link>
+          </Button>
+          <Button asChild>
+            <Link href="/login">se connecter</Link>
           </Button>
         </nav>
 
@@ -44,13 +50,13 @@ export default function Navbar() {
               </SheetHeader>
               <div className="grid gap-4 py-4">
                 <Button variant="ghost" asChild>
-                  <Link href="/brackets">Tournaments</Link>
+                  <Link href="/tournaments">Tournaments</Link>
                 </Button>
                 <Button asChild>
-                  <Link href="/register">se connecter</Link>
+                  <Link href="/register">inscription</Link>
                 </Button>
                 <Button asChild>
-                  <Link href="/signin">Profil</Link>
+                  <Link href="/login">se connecter</Link>
                 </Button>
               </div>
             </SheetContent>
