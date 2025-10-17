@@ -56,9 +56,22 @@ AMOUSSA Hamdou
 
 > Décrivez brièvement le projet, son objectif. Utilisez une vue business pour décrire ce que votre produit/service apporte à vos utilisateurs.
 
+Notre projet transforme le babyfoot classique en une expérience connectée autant pour les tournois entre amis que pour les compétitions en entreprise ou en université. Les utilisateurs peuvent créer, participer à des tournois et suivre les parties en temps réel. Un tableau de bord est accessible pour les utilisateurs afin de voir les statistiques génrales tels que le nombre total de partie joué, la note moyenne des joueurs ainsi que la moyenne de la durée d'un match. L’objectif est de rendre le babyfoot plus interactif, ludique et adapté à une utilisation massive.
+
 ## Technologies utilisées
 
 > Ici, listez les principales technologies, en expliquant pourquoi vous les avez choisies. Tout choix technique, langages, frameworks doit être justifié. (Parce que vous maîtrisez déjà la techno, parce que c'est la plus adaptée au besoin, parce que c'est la plus innovante, etc.)
+
+# Data/IA 
+- Python : Choisi pour sa simplicité, sa lisibilité et car il permet un développement rapide et collaboratif sur des datasets variés. Tous les membres du groupe Data/IA ont déjà des bases sur ce langage.
+
+- Pandas : Utilisé pour le nettoyage et la manipulation des données tabulaires. Il permet de gérer facilement les valeurs manquantes et les doublons.
+
+- NumPy : Utilisé pour les calculs numériques et les opérations matricielles.
+
+- Matplotlib : Permet de visualiser les tendances et les distributions de données de manière claire et flexible. Les graphiques sont essentiels pour l’analyse exploratoire (EDA).
+
+- Scikit-learn : Utilisé pour créer des modèles simples de prédiction. C’est une bibliothèque robuste et bien documentée, adaptée aux prototypes rapides comme pour un hackathon.
 
 ## Architecture
 
@@ -79,3 +92,5 @@ Exemple de lancement en **une seule commande**:
 > Section d'honnêteté, décrivez ce qui n'a pas été fait, ce qui aurait pu être amélioré, les limitations de votre solution actuelle. Montrez que vous avez une vision critique de votre travail, de ce qui a été accompli durant ces deux demi-journées.
 
 Le but n'est pas de faire un produit fini, mais de montrer vos compétences techniques, votre capacité à travailler en équipe, à gérer un projet, et à livrer quelque chose de fonctionnel dans un temps limité.
+
+L'intégration des modèles IA dans le site n'a pas été faite par manque de temps. Nous avons prioriser l'intégration des données néttoyées. La collaboration avec l'équipe pour la base de données s'est correctement déroulé tout au long du projet. Une amélioration serait de présenter une analyse graphique complète directement accessible depuis l'application web. 
