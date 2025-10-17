@@ -39,7 +39,7 @@ Bienvenue dans le Hackathon Ynov Toulouse 2025 !
 
 Porte parole 
 IS 
-AMOUSSA Hamdou
+AMOUSSA Hamdoune
 
 
 ## Table des matières
