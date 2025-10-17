@@ -64,7 +64,7 @@ model Team {
 
 model TeamMember {
   id        Int       @id @default(autoincrement())
-  userId    Int
+  userId    String
   teamId    Int
   role      PlayerRole
   user      User @relation(fields: [userId], references: [user_id])
@@ -83,7 +83,7 @@ enum PlayerRole {
 
 model GameTeam {
   id      Int   @id @default(autoincrement())
-  gameId  Int
+  gameId  String
   teamId  Int
 
   game Game @relation(fields: [gameId], references: [id])
@@ -94,7 +94,7 @@ model GameTeam {
 
 model Score {
   id         Int       @id @default(autoincrement())
-  gameId     Int       @unique
+  gameId     String       @unique
   red_score  Int
   blue_score Int
   winner     TeamColor
@@ -103,11 +103,9 @@ model Score {
 
 model Comment{
   id             Int    @id @default(autoincrement())
-  gameId         Int
-  userId         Int
+  gameId         String
+  userId         String
   player_comment String
   game           Game @relation(fields: [gameId], references: [id])
   user           User @relation(fields: [userId], references: [user_id])
 }
-
-model stats {}
