@@ -1,5 +1,3 @@
-// app/page.tsx
-
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Swords, Users, Trophy } from "lucide-react";
