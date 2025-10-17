@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  mariadb:
+    image: mariadb:11
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: supersecure
+      MYSQL_DATABASE: tournoibabyfoot
+      MYSQL_USER: app_user
+      MYSQL_PASSWORD: strongpass
+
+    ports:
+      - "3307:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - db_net
+
+networks:
+  db_net:
+    driver: bridge
+
+volumes:
+  mariadb_data:

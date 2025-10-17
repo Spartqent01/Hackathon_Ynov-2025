@@ -1,0 +1,122 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int         @id @default(autoincrement())
+  name      String
+  username  String      @unique
+  email     String      @unique
+  password  String
+  role      UserRole    @default(USER)
+  createdAt DateTime    @default(now())
+  teams     TeamMember[]
+  comments  Comment[]
+}
+
+enum UserRole {
+  ADMIN
+  USER
+}
+
+model Game {
+  id           Int          @id @default(autoincrement())
+  date         DateTime
+  location     String
+  duration     Int
+  referee      String
+  season       String
+  rating       Int
+  score        Score?
+  teams        GameTeam[]
+  comments     Comment[]
+  tournamentId Int?
+  tournament   Tournament?  @relation(fields: [tournamentId], references: [id])
+
+  @@index([tournamentId])
+}
+
+model Tournament {
+  id    Int    @id @default(autoincrement())
+  name  String
+  date  DateTime
+  games Game[]
+}
+
+model Team {
+  id         Int          @id @default(autoincrement())
+  team_color TeamColor
+  players    TeamMember[]
+  games      GameTeam[]
+}
+
+model TeamMember {
+  id     Int   @id @default(autoincrement())
+  userId Int
+  teamId Int
+  role   PlayerRole
+
+  user User @relation(fields: [userId], references: [id])
+  team Team @relation(fields: [teamId], references: [id])
+
+  @@unique([userId, teamId])
+  @@index([userId])
+  @@index([teamId])
+}
+
+enum TeamColor {
+  RED
+  BLUE
+}
+
+enum PlayerRole {
+  DEFENSE
+  ATTACK
+}
+
+model GameTeam {
+  id     Int @id @default(autoincrement())
+  gameId Int
+  teamId Int
+
+  game Game @relation(fields: [gameId], references: [id])
+  team Team @relation(fields: [teamId], references: [id])
+
+  @@unique([gameId, teamId]) 
+  @@index([gameId])
+  @@index([teamId])
+}
+
+model Score {
+  id         Int       @id @default(autoincrement())
+  gameId     Int       @unique
+  red_score  Int
+  blue_score Int
+  winner     TeamColor
+  game       Game      @relation(fields: [gameId], references: [id])
+}
+
+model Comment {
+  id             Int     @id @default(autoincrement())
+  gameId         Int
+  userId         Int
+  player_comment String
+
+  game Game @relation(fields: [gameId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([gameId])
+  @@index([userId])
+}
