@@ -61,6 +61,29 @@ Notre projet transforme le babyfoot classique en une expérience connectée auta
 ## Technologies utilisées
 
 > Ici, listez les principales technologies, en expliquant pourquoi vous les avez choisies. Tout choix technique, langages, frameworks doit être justifié. (Parce que vous maîtrisez déjà la techno, parce que c'est la plus adaptée au besoin, parce que c'est la plus innovante, etc.)
+## 🚀 Stack Technique
+
+Ce projet est construit autour d'un écosystème moderne basé sur JavaScript, avec **Next.js** comme framework principal.
+
+* **Framework Principal** : [**Next.js**](https://nextjs.org/) (React)
+* **Styling** : [Tailwind CSS / Shadcn]
+* **Linting / Formatting** : ESLint & Prettier
+* **Déploiement** : Docker
+
+### Pourquoi avoir choisi Next.js ?
+
+Le choix de **Next.js** comme technologie centrale n'a pas été anodin. Il répondait à plusieurs de nos objectifs techniques et d'apprentissage.
+
+1.  **Approche Full-Stack Intégrée**
+    Next.js nous a permis de gérer à la fois le **frontend** (l'interface utilisateur avec React) et le **backend** (logique serveur, routes d'API, connexion à la base de données) au sein d'un seul et même projet. Cette approche unifiée simplifie grandement le développement, la maintenance et le déploiement de l'application.
+
+2.  **Performance et Réactivité**
+    Grâce à ses fonctionnalités de rendu côté serveur (**SSR**) et de génération de sites statiques (**SSG**), Next.js offre des performances excellentes dès le chargement initial. La navigation côté client reste ensuite extrêmement **réactive**, procurant une expérience utilisateur fluide, similaire à celle d'une application de bureau.
+
+3.  **Montée en Compétences**
+    Ce projet était également une opportunité pour notre équipe de se former sur un framework puissant et très demandé dans l'industrie. Bien que nous ne le maîtrisions pas au départ, son apprentissage nous a permis d'adopter des pratiques de développement modernes et de mieux comprendre les enjeux des applications web actuelles.
+
+---
 
 # Data/IA 
 - Python : Choisi pour sa simplicité, sa lisibilité et car il permet un développement rapide et collaboratif sur des datasets variés. Tous les membres du groupe Data/IA ont déjà des bases sur ce langage.
@@ -100,5 +123,12 @@ Notre projet transforme le babyfoot classique en une expérience connectée auta
 > Section d'honnêteté, décrivez ce qui n'a pas été fait, ce qui aurait pu être amélioré, les limitations de votre solution actuelle. Montrez que vous avez une vision critique de votre travail, de ce qui a été accompli durant ces deux demi-journées.
 
 Le but n'est pas de faire un produit fini, mais de montrer vos compétences techniques, votre capacité à travailler en équipe, à gérer un projet, et à livrer quelque chose de fonctionnel dans un temps limité.
+---
+## ⚠️ État Actuel du Projet
 
 L'intégration des modèles IA dans le site n'a pas été faite par manque de temps. Nous avons prioriser l'intégration des données néttoyées. La collaboration avec l'équipe pour la base de données s'est correctement déroulé tout au long du projet. Une amélioration serait de présenter une analyse graphique complète directement accessible depuis l'application web. 
+
+
+* **Partie Backend :** Le développement de la partie backend est incomplet. Toutes les logiques serveur et les points d'accès (API) ne sont pas encore finalisés.
+
+* **Liaison Frontend-Backend :** La connexion entre l'interface utilisateur (frontend) et le backend n'a pas encore été établie. L'application utilise pour le moment des données statiques ou simulées.
